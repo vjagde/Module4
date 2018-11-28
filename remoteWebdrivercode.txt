@@ -1,0 +1,32 @@
+package newweb;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class chkRemote 
+{
+public static void main(String[] args) throws InterruptedException, MalformedURLException 
+
+	{
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		capabilities.setBrowserName("firefox");
+		//capabilities.setCapability("firefox_binary","C:/Users/npadmawa.CORP/AppData/Local/Mozilla Firefox/firefox.exe");
+		capabilities.setPlatform(Platform.ANY);
+				
+		WebDriver driver = new RemoteWebDriver(new URL("http://10.103.0.189:5555/wd/hub"), capabilities);
+try {
+		driver.get("http://demo.opencart.com/");
+		System.out.println(driver.getTitle());
+//		driver.quit();
+}
+catch(Exception ex){
+	System.out.println("Hello");
+}
+}
+	}
+
